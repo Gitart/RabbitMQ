@@ -1,5 +1,7 @@
 // http://rafalgolarz.com/blog/2018/02/20/rabbitmq_essentials_with_go_examples/
 // Publisher.go
+// http://rafalgolarz.com/blog/2018/02/20/rabbitmq_essentials_with_go_examples/
+// Publisher.go
 package main
 
 import (
@@ -13,32 +15,43 @@ import (
 // ***********************************************************************
 func main() {
 
+     // Read-write check
+     Read:=false
 
-      // Запись в разные каналы
-      go WriteToQue("hey",1000)    
-      go WriteToQue("Wrk",100)    
-      WriteToQue("Integrat",1234)    
+     if Read{ 
+          // Запись в разные каналы
+          go WriteToQueue("hey",1000)    
+          go WriteToQueue("Wrk",100)    
+             WriteToQueue("Integrat",1234)    
+     }
       
-      // Readque("hey")
-      // Readque("hey")
-      // Readque("hello")
+
+      if !Read{
+          // Чтение очереди по каналам
+          go ReadQueue("hey")
+          go ReadQueue("hey")
+          go ReadQueue("Wrk")
+             ReadQueue("Integrat")
+     }
+
+     Readque("Completed.")
 }
 
 // ***********************************************************************
 // Запись in loop
 // ***********************************************************************
-func WriteToQue(Q string, Qnt int){
-         
+func WriteToQueue(Q string, Qnt int){
      for i:=1;i<=Qnt;i++  {
            l:=`{"Id":"`+InttoStr(i)+`","Strs":"Testing"}` 
            SentQueu(Q, l)    
      }
 }
 
+
 // ***********************************************************************
 // Sent in giues
 // ***********************************************************************
-func SentQueu(Chanel, Bodys string){
+func SentQueue(Chanel, Bodys string){
    // Make a connection
     conn, _ := amqp.Dial("amqp://guest:guest@localhost:5672/")
     defer conn.Close()
@@ -71,7 +84,7 @@ func SentQueu(Chanel, Bodys string){
 // *********************************************************************
 // Чтение из канала
 // *********************************************************************
-func Readque(Chanel string){
+func ReadQueue(Chanel string){
       // Make a connection
     conn, _ := amqp.Dial("amqp://guest:guest@localhost:5672/")
     defer conn.Close()
@@ -82,12 +95,12 @@ func Readque(Chanel string){
     
     // Запрос к каналу - Hey
     q, err := ch.QueueDeclare(Chanel,false,false,false,false,nil)
-
     if err!=nil{
        log.Println(err)
      }
 
-    // queue, consumer,auto-ack,exclusive, no-local,no-wait, args
+
+    // queue, consumer,auto-ack,exclusive, no-local, no-wait, args
     msgs, err := ch.Consume(q.Name,"", true, false, false, false, nil)
 
     // Чтение сообщений с канала:
@@ -100,7 +113,6 @@ func Readque(Chanel string){
     }()
 
     log.Printf(" [*] Waiting for messages. To exit press CTRL+C")
-
     <-forever
 }
 
