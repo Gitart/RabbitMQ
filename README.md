@@ -1,9 +1,10 @@
-# rabitmq
+# RabbitMQ
 Samples and descriptions for work with RabitMq
 
-# УСТАНОВКА И УПРАВЛЕНИЕ RABBITMQ
+# УСТАНОВКА И УПРАВЛЕНИЕ RabbitMQ
 ### Centos, Debian, RHEL, Ubuntu	
 https://www.8host.com/blog/ustanovka-i-upravlenie-rabbitmq/
+https://www.rabbitmq.com/tutorials/tutorial-four-go.html
 
 
 ### Сообщения, брокеры сообщений и очерёдность
