@@ -2,6 +2,10 @@
 https://www.rabbitmq.com/install-windows-manual.html
 
 
+## Library for GO
+https://github.com/streadway/amqp/issues/117
+
+
 ## Инсталяция Python
 
 ### After install Python its here
