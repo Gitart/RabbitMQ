@@ -73,6 +73,9 @@ func main() {
 }
 ```
 
+## Library
+https://github.com/streadway/amqp
+
 
 ## Description and managment
 https://www.8host.com/blog/ustanovka-i-upravlenie-rabbitmq/
