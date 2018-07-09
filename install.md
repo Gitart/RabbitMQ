@@ -19,6 +19,7 @@ rabbitmq-plugins enable rabbitmq_management
 ## Запуск командной оболочки
 http://localhost:15672/#/
 
+Стандартные имя и пароль – **guest**.
 
 
 ## Let’s get the client package:
