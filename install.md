@@ -4,6 +4,9 @@ https://www.rabbitmq.com/install-windows-manual.html
 
 ## Инсталяция Python
 
+### After install Python its here
+C:\Users\admin\AppData\Local\Programs\Python\Python37-32\python.exe
+
 
 ## Включение командной оболочки
 Переход в дирректорию RabitMq 
