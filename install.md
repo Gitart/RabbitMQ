@@ -22,6 +22,10 @@ http://localhost:15672/#/
 Стандартные имя и пароль – **guest**.
 
 
+## Просмотр очереди
+http://localhost:15672/#/queues
+
+
 ## Let’s get the client package:
 
 go get github.com/streadway/amqp
