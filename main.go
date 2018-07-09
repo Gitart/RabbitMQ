@@ -1,5 +1,4 @@
-// http://rafalgolarz.com/blog/2018/02/20/rabbitmq_essentials_with_go_examples/
-// Publisher.go
+
 // http://rafalgolarz.com/blog/2018/02/20/rabbitmq_essentials_with_go_examples/
 // Publisher.go
 package main
